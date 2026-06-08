@@ -57,12 +57,16 @@ const SerbisyoBot = (() => {
     const text = welcomeTexts[currentLang] || welcomeTexts.fil;
     appendBotMessage(text, false);
   }
-
+// ========================================================================================================================
   function appendUserMessage(text) {
     const row = document.createElement('div');
     row.className = 'msg-row user';
     row.innerHTML = `
-      <div class="msg-avatar-sm user-av">👤</div>
+
+      <div class="msg-avatar-sm user-av">
+        <img src="assets/img/user-profile.png" alt="user-logo" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+      </div>
+
       <div class="msg-group">
         <div class="msg-bubble user">${escapeHtml(text)}</div>
       </div>
@@ -70,14 +74,18 @@ const SerbisyoBot = (() => {
     messages.appendChild(row);
     scrollToBottom();
   }
-
+// ==============================================================================================================================
   function appendBotMessage(text, showFeedback = true) {
     const row = document.createElement('div');
     row.className = 'msg-row bot';
     const msgId = 'msg-' + Date.now();
 
     row.innerHTML = `
-      <div class="msg-avatar-sm">🤖</div>
+      <div class="msg-avatar-sm">
+      
+      <img src="assets/img/712045113_1315379467330870_8130851167054288653_n-removebg-preview.png" alt="Bot Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+
+      </div>
       <div class="msg-group">
         <div class="msg-bubble bot" id="${msgId}">${formatBotText(text)}</div>
         ${showFeedback ? `
@@ -97,7 +105,11 @@ const SerbisyoBot = (() => {
     row.className = 'msg-row bot';
     row.id = 'typing-row';
     row.innerHTML = `
-      <div class="msg-avatar-sm">🤖</div>
+      <div class="msg-avatar-sm">
+
+      <img src="assets/img/712045113_1315379467330870_8130851167054288653_n-removebg-preview.png" alt="bot Logo" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+
+      </div>
       <div class="msg-group">
         <div class="msg-bubble bot">
           <div class="typing-indicator">
@@ -240,6 +252,8 @@ const SerbisyoBot = (() => {
     }).catch(() => {/* silently ignore */});
   }
 
+
+// ==================================================================================================================
   // ============================================================
   // LANGUAGE SWITCHING
   // ============================================================
@@ -257,6 +271,9 @@ const SerbisyoBot = (() => {
     url.searchParams.set('lang', lang);
     window.location.href = url.toString();
   }
+// ==================================================================================================================
+
+
 
   // ============================================================
   // SERVICE DIRECTORY SEARCH
@@ -335,10 +352,22 @@ const SerbisyoBot = (() => {
       input.addEventListener('input', autoResize);
     }
 
+
+// =========================================================================================================
     // Language buttons (navbar)
+    // document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    //   btn.addEventListener('click', () => switchLanguage(btn.dataset.langBtn));
+    // });
+
     document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-      btn.addEventListener('click', () => switchLanguage(btn.dataset.langBtn));
-    });
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchLanguage(btn.dataset.langBtn);
+      });
+    }); 
+
+// ==========================================================================================================
+
 
     // Quick reply pills (delegated)
     document.addEventListener('click', e => {

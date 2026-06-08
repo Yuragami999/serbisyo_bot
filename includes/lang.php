@@ -76,7 +76,7 @@ $translations = [
         'free'                => 'Libre',
     ],
 
-    // ============================= ======= ======= fixx translation
+    // ============================= ======= ======= fixx translation (Meranaw)
     'mrw' => [
         'app_name'            => 'SerbisyoBot',
         'app_tagline'         => 'Pakisabi mo, Tosagonan tano!',

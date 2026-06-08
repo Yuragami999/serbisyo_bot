@@ -40,7 +40,6 @@ $quick_reply_queries = [
     ],
 
     //================================================== paki translate nga akoo netoo HAHAHAHAAAHAHAHA
-
     'mrw' => [
         'Antona so kinaangayan para sa Birth Certificate?',
         'Mapapalano ko Business Permit sa Marawi?',
@@ -65,22 +64,30 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a6b3a'/><text x='16' y='23' text-anchor='middle' font-size='18'>🤖</text></svg>">
+
+  <!-- ========================================================================================================================================= -->
+    <link rel="icon" href="assets/img/712045113_1315379467330870_8130851167054288653_n-removebg-preview.png" >
+  <!-- ========================================================================================================================================= -->
+
+
 </head>
 <body>
 
+
+<!-- =========================================================================== warning notice if ever the pass key is not commited -->
 <div class="demo-banner" id="demoBanner">
   ⚡ <strong>Demo Mode:</strong> Configure your AWS credentials in <code>includes/config.php</code> to enable live Claude AI responses.
   <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html" target="_blank" rel="noopener">Learn more →</a>
 </div>
+<!-- ====================================================================================================== -->
+
 
 
 <nav class="sb-navbar navbar">
   <div class="container d-flex align-items-center justify-content-between">
 
     <a class="navbar-brand" href="index.php">
-      <div class="bot-icon">🤖</div>
+      <img src="assets/img/712045113_1315379467330870_8130851167054288653_n-removebg-preview.png" style="height:48px; margin-right:8px" alt="">
       <span><?= htmlspecialchars(t('app_name')) ?></span>
     </a>
 
@@ -98,6 +105,7 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 </nav>
 
 
+<!-- ============================================================================================ -->
 <section class="sb-hero" aria-labelledby="heroTitle">
   <div class="geometric-ornament" aria-hidden="true">﷽</div>
   <div class="container">
@@ -116,34 +124,45 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 
         <p class="subtitle"><?= htmlspecialchars(t('hero_description')) ?></p>
 
+<!-- ================================================================== configure (unsolved bug) -->
+
         <button class="hero-cta-btn" id="heroCta" aria-expanded="false" aria-controls="chatWindow">
           <i class="bi bi-chat-dots-fill"></i>
           <?= htmlspecialchars(t('hero_cta')) ?>
         </button>
 
-        <div class="hero-stats">
+<!-- =========================================================== -->
+
+<div class="hero-stats">
+
           <div class="hero-stat">
             <strong>24/7</strong>
             <span><?= $lang === 'fil' ? 'Available' : ($lang === 'mrw' ? 'Iandam' : 'Available') ?></span>
           </div>
+
           <div class="hero-stat">
             <strong>3</strong>
             <span><?= $lang === 'fil' ? 'Wika' : ($lang === 'mrw' ? 'Kalagon' : 'Languages') ?></span>
           </div>
+
           <div class="hero-stat">
             <strong>6+</strong>
             <span><?= $lang === 'fil' ? 'Kategorya ng Serbisyo' : ($lang === 'mrw' ? 'Klase a Serbisyo' : 'Service Categories') ?></span>
           </div>
+
           <div class="hero-stat">
             <strong>AI</strong>
             <span><?= $lang === 'fil' ? 'Pinapatakbo' : ($lang === 'mrw' ? 'Powered' : 'Powered') ?></span>
           </div>
+
         </div>
 
       </div>
     </div>
   </div>
 </section>
+<!-- ============================================================================================================ -->
+
 
 <section class="sb-services" aria-labelledby="servicesTitle">
   <div class="container">
@@ -248,7 +267,9 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 
   <div class="chat-header">
     <div class="chat-header-left">
-      <div class="chat-avatar" aria-hidden="true">🤖</div>
+      <div class="chat-avatar" aria-hidden="true">
+        <img src="assets/img/712045113_1315379467330870_8130851167054288653_n-removebg-preview.png" alt="SerbisyoBot Avatar" style="width:100%; object-fit:cover; border-radius:50%;">
+      </div>
       <div>
         <div class="chat-name"><?= htmlspecialchars(t('chat_title')) ?></div>
         <div class="chat-status">
@@ -257,6 +278,8 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
         </div>
       </div>
     </div>
+
+    
     <div class="chat-header-right">
       <?php foreach (SUPPORTED_LANGUAGES as $code => $label): ?>
       <button class="chat-lang-btn <?= CURRENT_LANG === $code ? 'active' : '' ?>"
@@ -285,6 +308,7 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 
   <div id="chatMessages" class="chat-messages" aria-live="polite" aria-label="Chat messages">
 
+
   </div>
 
   <div class="chat-input-area">
@@ -304,7 +328,7 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 <!-- ==================================================================================================================== -->
 
 <footer class="sb-footer">
-  <span class="footer-logo"><?= htmlspecialchars(t('app_name')) ?></span>
+  <img src="assets/img/712045113_1315379467330870_8130851167054288653_n-removebg-preview.png" alt="footer Logo" class="footer-logo-img" style="height: 46px;">
   <?= htmlspecialchars(t('footer_text')) ?><br>
   <small>
     &copy; <?= date('Y') ?> <?= htmlspecialchars(LGU_NAME) ?> &mdash;
