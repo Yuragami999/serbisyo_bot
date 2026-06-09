@@ -135,7 +135,7 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 
 <!-- the section itself has a design contraint which limits the action of other options like the call to action button -->
 <section class="sb-hero" aria-labelledby="heroTitle">
-  <div class="geometric-ornament" aria-hidden="true">﷽</div>
+  <div class="geometric-ornament" aria-hidden="true"></div>
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-7">
@@ -151,7 +151,13 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
           </h1>
 
           <p class="subtitle"><?= htmlspecialchars(t('hero_description')) ?></p>
-        
+           <button class="hero-cta-btn" id="heroCta"
+                    aria-expanded="false"
+                    aria-controls="chatWindow"
+                    style="padding: .65rem 1.5rem; font-size: .9rem;">
+              <i class="bi bi-chat-dots-fill"></i>
+              <?= htmlspecialchars(t('hero_cta')) ?>
+            </button>
 
             <div class="hero-stats">
 
@@ -190,22 +196,15 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 
           <!-- =========================================================================================== -->
 
-          <div style="background: var(--white); border-bottom: 1px solid var(--border); padding: 1.1rem 0;">
+          <!-- <div style="background: var(--white); border-bottom: 1px solid var(--border); padding: 1.1rem 0;">
           <div class="container d-flex align-items-center justify-content: space-between gap-3 flex-wrap">
-            
             <p class="mb-0 text-muted" style="font-size: .9rem;">
               <i class="bi bi-shield-check text-green me-1"></i>
               <?= $lang === 'fil' ? 'Handa kaming tumulong 24/7' : ($lang === 'mrw' ? 'Iandam ami a tumulong 24/7' : 'Ready to assist you 24/7') ?>
             </p>
-            <button class="hero-cta-btn" id="heroCta"
-                    aria-expanded="false"
-                    aria-controls="chatWindow"
-                    style="padding: .65rem 1.5rem; font-size: .9rem;">
-              <i class="bi bi-chat-dots-fill"></i>
-              <?= htmlspecialchars(t('hero_cta')) ?>
-            </button>
+            
           </div>
-        </div>
+        </div> -->
 
 <!-- ================================================================================================================= -->
 

@@ -14,7 +14,6 @@ function get_db(): mysqli {
     return $conn;
 }
 
-
 function get_default_tenant_id(): ?string {
     try {
         $db   = get_db();
