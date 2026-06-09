@@ -265,11 +265,13 @@ function get_demo_response(string $message, string $lang): array {
     $responses = [
         'fil' => [
             'civil_registry.birth_certificate' => "Para sa **Sertipiko ng Kapanganakan**, kailangan mo ng:\n\n1. Record ng kapanganakan mula sa ospital\n2. PSA form (mula sa Civil Registrar)\n3. Sertipikasyon mula sa barangay\n4. Mga valid ID ng mga magulang\n\n**Opisina:** Civil Registrar's Office, Lungsod ng Marawi, Ground Floor ng City Hall\n**Bayad:** Libre\n**Oras ng Pagproseso:** 3-5 araw na trabaho\n\nMayroon ka pa bang ibang katanungan?",
+
             'business_permit' => "Para sa **Permit sa Negosyo**, ang mga kinakailangan ay:\n\n1. Rehistrasyon ng DTI o SEC\n2. Barangay clearance\n3. Kontrata ng paupahan o titulo ng ari-arian\n4. Valid ID\n5. Natapos na application form\n\n**Opisina:** Business Permits & Licensing Office, 2nd Floor City Hall\n**Bayad:** PHP 500.00 (base fee)\n**Oras ng Pagproseso:** 5-7 araw na trabaho\n\nMayroon ka pa bang ibang katanungan?",
+
             'default' => "Kumusta! Ako si SerbisyoBot. Maaari mo akong tanungin tungkol sa mga serbisyo ng Lungsod ng Marawi tulad ng:\n\n• Sertipiko ng Kapanganakan\n• Permit sa Negosyo\n• Frantsisa ng Tricycle\n• Iskolarship\n• Barangay Clearance\n• Cedula\n\nAno ang iyong katanungan?",
         ],
         'mrw' => [
-            'default' => "Assalamu Alaikum! Ako si SerbisyoBot. Makapakisabi ka kaniyak ko serbisyo sa Ranao a Baya. Antonaa so tabangan tano anka?",
+            'default' => "Assalamu Alaikum! Ako si SerbisyoBot. Makapakisabi ka kaniyak ko serbisyo sa Ranao a Baya. Antonaa so tabangan tano anka?", 
         ],
         'en' => [
             'default' => "Hello! I'm SerbisyoBot. I can help you with Marawi City government services like Birth Certificates, Business Permits, Tricycle Franchises, Scholarships, Barangay Clearances, and more. What would you like to know?",

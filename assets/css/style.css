@@ -120,14 +120,14 @@ h1, h2, h3, h4 {
    ============================================================ */
 .sb-hero {
   background:
-    linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 55%, var(--green-800) 100%);
+  linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 55%, var(--green-800) 100%);
   position: relative;
   overflow: hidden;
   padding: 5rem 0 4.5rem;
   color: var(--white);
 }
 
-.sb-hero::before {
+/* .sb-hero::before {
   content: '';
   position: absolute; inset: 0;
   background:
@@ -136,7 +136,23 @@ h1, h2, h3, h4 {
       transparent 0px, transparent 28px,
       rgba(255,255,255,.025) 28px, rgba(255,255,255,.025) 30px
     );
+} */
+
+.sb-hero::before {
+  position: absolute; inset: 0;
+  z-index: 0;
+  pointer-events: none;  /* decorative only — never blocks clicks */
+  background: repeating-linear-gradient( 
+      45deg,
+      transparent 0px, transparent 28px,
+      rgba(255,255,255,.025) 28px, rgba(255,255,255,.025) 30px);
 }
+
+.sb-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
 
 .sb-hero::after {
   content: '';
@@ -148,13 +164,44 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 
-.sb-hero .geometric-ornament {
+.hero-cta-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold-400);
+      color: var(--green-900) !important;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .25s;
+      box-shadow: 0 4px 20px rgba(200,154,32,.35);
+    }
+.hero-cta-btn:hover {
+      background: var(--gold-300);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,154,32,.45);
+    
+    }
+
+/* .sb-hero .geometric-ornament {
   position: absolute; top: 20px; right: 40px;
   font-size: 6rem; opacity: .06;
   font-family: var(--font-display);
   line-height: 1;
   user-select: none;
+} */
+
+.sb-hero .geometric-ornament {
+  position: absolute; top: 20px; right: 40px;
+  font-size: 6rem;
+  pointer-events: none;  /* pure decoration */
+  z-index: 0;
 }
+
+
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 0.4rem;
@@ -193,27 +240,6 @@ h1, h2, h3, h4 {
   color: rgba(255,255,255,.78);
   max-width: 540px;
   margin-bottom: 2rem;
-}
-
-.hero-cta-btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--gold-400);
-  color: var(--green-900) !important;
-  font-weight: 700;
-  border: none;
-  border-radius: var(--radius-md);
-  padding: 0.85rem 2rem;
-  font-size: 1rem;
-  font-family: var(--font-body);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all .25s;
-  box-shadow: 0 4px 20px rgba(200,154,32,.35);
-}
-.hero-cta-btn:hover {
-  background: var(--gold-300);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(200,154,32,.45);
 }
 
 .hero-stats {

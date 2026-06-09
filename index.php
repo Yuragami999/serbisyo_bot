@@ -73,6 +73,35 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 </head>
 <body>
 
+  <style>
+    .btn-alter{
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold-400);
+      color: var(--green-900) !important;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .25s;
+      box-shadow: 0 4px 20px rgba(200,154,32,.35);
+    }
+    .btn-alter:hover{
+      background: var(--gold-300);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,154,32,.45);
+    }
+        .sb-hero::before {
+      content: '';          /* ← add this, it was missing! */
+      position: absolute; inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(...);
+    }
+  </style>
 
 <!-- =========================================================================== warning notice if ever the pass key is not commited -->
 <div class="demo-banner" id="demoBanner">
@@ -104,64 +133,81 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
   </div>
 </nav>
 
-
-<!-- ============================================================================================ -->
+<!-- the section itself has a design contraint which limits the action of other options like the call to action button -->
 <section class="sb-hero" aria-labelledby="heroTitle">
   <div class="geometric-ornament" aria-hidden="true">﷽</div>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-7">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
 
-        <div class="hero-badge">
-          <span class="dot"></span>
-          <?= htmlspecialchars(LGU_NAME . ', ' . LGU_REGION) ?>
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <?= htmlspecialchars(LGU_NAME . ', ' . LGU_REGION) ?>
+          </div>
+
+          <h1 id="heroTitle">
+            <?= htmlspecialchars(t('app_name')) ?><br>
+            <span><?= htmlspecialchars(t('app_tagline')) ?></span>
+          </h1>
+
+          <p class="subtitle"><?= htmlspecialchars(t('hero_description')) ?></p>
+        
+
+            <div class="hero-stats">
+
+                      <div class="hero-stat">
+                        <strong>24/7</strong>
+                        <span><?= $lang === 'fil' ? 'Available' : ($lang === 'mrw' ? 'Iandam' : 'Available') ?></span>
+                      </div>
+
+                      <div class="hero-stat">
+                        <strong>3</strong>
+                        <span><?= $lang === 'fil' ? 'Wika' : ($lang === 'mrw' ? 'Kalagon' : 'Languages') ?></span>
+                      </div>
+
+                      <div class="hero-stat">
+                        <strong>6+</strong>
+                        <span><?= $lang === 'fil' ? 'Kategorya ng Serbisyo' : ($lang === 'mrw' ? 'Klase a Serbisyo' : 'Service Categories') ?></span>
+                      </div>
+
+                      <div class="hero-stat">
+                        <strong>AI</strong>
+                        <span><?= $lang === 'fil' ? 'Pinapatakbo' : ($lang === 'mrw' ? 'Powered' : 'Powered') ?></span>
+                      </div>
         </div>
-
-        <h1 id="heroTitle">
-          <?= htmlspecialchars(t('app_name')) ?><br>
-          <span><?= htmlspecialchars(t('app_tagline')) ?></span>
-        </h1>
-
-        <p class="subtitle"><?= htmlspecialchars(t('hero_description')) ?></p>
-
-<!-- ================================================================== configure (unsolved bug) -->
-
-        <button class="hero-cta-btn" id="heroCta" aria-expanded="false" aria-controls="chatWindow">
-          <i class="bi bi-chat-dots-fill"></i>
-          <?= htmlspecialchars(t('hero_cta')) ?>
-        </button>
-
-<!-- =========================================================== -->
-
-<div class="hero-stats">
-
-          <div class="hero-stat">
-            <strong>24/7</strong>
-            <span><?= $lang === 'fil' ? 'Available' : ($lang === 'mrw' ? 'Iandam' : 'Available') ?></span>
-          </div>
-
-          <div class="hero-stat">
-            <strong>3</strong>
-            <span><?= $lang === 'fil' ? 'Wika' : ($lang === 'mrw' ? 'Kalagon' : 'Languages') ?></span>
-          </div>
-
-          <div class="hero-stat">
-            <strong>6+</strong>
-            <span><?= $lang === 'fil' ? 'Kategorya ng Serbisyo' : ($lang === 'mrw' ? 'Klase a Serbisyo' : 'Service Categories') ?></span>
-          </div>
-
-          <div class="hero-stat">
-            <strong>AI</strong>
-            <span><?= $lang === 'fil' ? 'Pinapatakbo' : ($lang === 'mrw' ? 'Powered' : 'Powered') ?></span>
-          </div>
-
-        </div>
-
       </div>
     </div>
   </div>
 </section>
-<!-- ============================================================================================================ -->
+
+   <!-- ================================================================== configure (unsolved bug) -->
+            <!-- <div>
+              <button class="hero-cta-btn" id="heroCta" aria-expanded="false" aria-controls="chatWindow">
+                <i class="bi bi-chat-dots-fill"></i>
+                <?= htmlspecialchars(t('hero_cta')) ?>
+              </button>
+            </div> -->
+
+          <!-- =========================================================================================== -->
+
+          <div style="background: var(--white); border-bottom: 1px solid var(--border); padding: 1.1rem 0;">
+          <div class="container d-flex align-items-center justify-content: space-between gap-3 flex-wrap">
+            
+            <p class="mb-0 text-muted" style="font-size: .9rem;">
+              <i class="bi bi-shield-check text-green me-1"></i>
+              <?= $lang === 'fil' ? 'Handa kaming tumulong 24/7' : ($lang === 'mrw' ? 'Iandam ami a tumulong 24/7' : 'Ready to assist you 24/7') ?>
+            </p>
+            <button class="hero-cta-btn" id="heroCta"
+                    aria-expanded="false"
+                    aria-controls="chatWindow"
+                    style="padding: .65rem 1.5rem; font-size: .9rem;">
+              <i class="bi bi-chat-dots-fill"></i>
+              <?= htmlspecialchars(t('hero_cta')) ?>
+            </button>
+          </div>
+        </div>
+
+<!-- ================================================================================================================= -->
 
 
 <section class="sb-services" aria-labelledby="servicesTitle">
@@ -255,13 +301,25 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
   </div>
 </section>
 
-<button id="chatFab"
+
+<!-- ================================================================================ -->
+<!-- <button id="chatFab"
         aria-label="<?= htmlspecialchars(t('chat_title')) ?>"
         aria-controls="chatWindow"
         aria-expanded="false">
   <span role="img" aria-hidden="true">💬</span>
   <span class="fab-notif" aria-label="New">1</span>
-</button>
+</button> -->
+
+  <button id="chatFab"
+          aria-label="<?= htmlspecialchars(t('chat_title')) ?>"
+          aria-controls="chatWindow"
+          aria-expanded="false">
+    <i id="fabIcon" class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+    <span class="fab-notif" aria-label="New">1</span>
+  </button>
+
+<!-- ================================================================================== -->
 
 <div id="chatWindow" class="hidden" role="dialog" aria-modal="true" aria-label="<?= htmlspecialchars(t('chat_title')) ?>">
 
@@ -330,9 +388,14 @@ $quick_reply_qrs       = $quick_reply_queries[$lang] ?? $quick_reply_queries['fi
 <footer class="sb-footer">
   <img src="assets/img/712045113_1315379467330870_8130851167054288653_n-removebg-preview.png" alt="footer Logo" class="footer-logo-img" style="height: 46px;">
   <?= htmlspecialchars(t('footer_text')) ?><br>
-  <small>
+  <!-- <small>
     &copy; <?= date('Y') ?> <?= htmlspecialchars(LGU_NAME) ?> &mdash;
     <?= $lang === 'fil' ? 'Lahat ng karapatan ay nakalaan.' : ($lang === 'mrw' ? 'All rights reserved.' : 'All rights reserved.') ?>
+  </small> -->
+
+  <small>
+    &copy;<?= date('Y') ?> <?= htmlspecialchars(LGU_NAME) ?> &mdash;
+    <?= $lang === 'fil' ? 'Gawa ng team LARPers MSU main.' : ($lang === 'mrw' ? 'Made by team LARPers MSU main.' : 'Made by team LARPers MSU main.') ?>
   </small>
 </footer>
 

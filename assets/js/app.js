@@ -334,6 +334,68 @@ const SerbisyoBot = (() => {
   function init() {
     // FAB click
     if (fab) fab.addEventListener('click', () => isChatOpen ? closeChat() : openChat());
+// ====================================================================
+    function openChat() {
+      isChatOpen = false;
+      
+      // const chatWindow = document.getElementById('chatWindow');
+      // if (chatWindow) chatWindow.classList.remove('hidden');
+
+      const chatWindow = document.getElementById('chatWindow');
+      if(chatWindow) chatWindow.classList.remove('hidden');
+
+      const chatFab = document.getElementById('chatFab');
+      if (chatFab) {
+          chatFab.style.setProperty('display', 'none', 'important'); 
+          // Using 'none' completely deletes its physical footprint on screen
+      }
+  }
+    // function openChat(){
+    //   const chatWindow = document.getElementById('chatWindow');
+    //     if(chatWindow) chatWindow.classList.remove('hidden');
+
+    //     const chatFab = document.getElementById('chatFab');
+    //     if (chatFab) {
+    //         chatFab.style.setProperty('display', 'none', 'important'); 
+    //         // Using 'none' completely deletes its physical footprint on screen
+    //     }
+    // }
+
+    // function openChat(){
+    //   isChatOpen = true;
+
+
+    //   const chatFab = document.getElementById('chatFab');
+    //   if(chatFab){
+    //     chatFab.style.setProperty('display', 'none', 'import');
+    //   }
+
+    // }
+
+  function closeChat() {
+    isChatOpen = false;
+    
+    const chatWindow = document.getElementById('chatWindow');
+    if (chatWindow) chatWindow.classList.add('hidden');
+
+    const chatFab = document.getElementById('chatFab');
+    if (chatFab) {
+        chatFab.style.display = 'flex'; // or 'block' depending on your layout style
+    }
+}
+
+
+    // function closeChat(){
+    //   isChatOpen = false;
+    //   const chatFab = document.getElementById('chatFab');
+    //   if(chatFab){
+    //     chatFab.style.display = 'flex';
+    //   }
+    // }
+
+
+
+// ===========================================================
 
     // Close button
     if (closeBtn) closeBtn.addEventListener('click', closeChat);
@@ -352,44 +414,49 @@ const SerbisyoBot = (() => {
       input.addEventListener('input', autoResize);
     }
 
+        // Hero CTA button
+        const heroCta = document.getElementById('heroCta');
+        if (heroCta) {
+          heroCta.addEventListener('click', function (e) {
+            e.preventDefault();
+            openChat();
+          });
+        }
 
-// =========================================================================================================
+
+      // =========================================================================================================
     // Language buttons (navbar)
     // document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     //   btn.addEventListener('click', () => switchLanguage(btn.dataset.langBtn));
     // });
 
-    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        switchLanguage(btn.dataset.langBtn);
-      });
-    }); 
+      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          switchLanguage(btn.dataset.langBtn);
+        });
+      }); 
 
-// ==========================================================================================================
+      // ==========================================================================================================
 
 
-    // Quick reply pills (delegated)
-    document.addEventListener('click', e => {
-      if (e.target.classList.contains('qr-pill')) {
-        sendQuickReply(e.target.dataset.query || e.target.textContent.trim());
-      }
-      if (e.target.classList.contains('svc-ask-btn')) {
-        const q = e.target.dataset.query;
-        if (q) sendQuickReply(q);
-      }
-    });
+        // Quick reply pills (delegated)
+        document.addEventListener('click', e => {
+          if (e.target.classList.contains('qr-pill')) {
+            sendQuickReply(e.target.dataset.query || e.target.textContent.trim());
+          }
+          if (e.target.classList.contains('svc-ask-btn')) {
+            const q = e.target.dataset.query;
+            if (q) sendQuickReply(q);
+          }
+        });
 
-    // Service search
-    initSearch();
-
-    // Hero CTA button
-    const heroCta = document.getElementById('heroCta');
-    if (heroCta) heroCta.addEventListener('click', openChat);
+        // Service search
+        initSearch();
   }
 
   // Public API
-  return { init, sendQuickReply, feedback, switchLanguage };
-})();
+    return { init, sendQuickReply, feedback, switchLanguage };
+  })();
 
 document.addEventListener('DOMContentLoaded', SerbisyoBot.init);
